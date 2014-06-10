@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PNGMapProducerExclusionFilter" class="org.geoserver.platform.NameExclusionFilter">
+		<property name="beanId" value="PNGMapProducer" />
+	</bean>
+	<bean id="PNG8MapProducerExclusionFilter" class="org.geoserver.platform.NameExclusionFilter">
+		<property name="beanId" value="PNG8MapProducer" />
+	</bean>
+	<bean id="GeoTiffMapProducerExclusionFilter" class="org.geoserver.platform.NameExclusionFilter">
+		<property name="beanId" value="GeoTiffMapProducer" />
+	</bean>
+	<bean id="GeoTiffMapProducer8ExclusionFilter" class="org.geoserver.platform.NameExclusionFilter">
+		<property name="beanId" value="GeoTiffMapProducer8" />
+	</bean>
+	<bean id="TiffMapProducerExclusionFilter" class="org.geoserver.platform.NameExclusionFilter">
+		<property name="beanId" value="TiffMapProducer" />
+	</bean>
+	<bean id="Tiff8MapProducerExclusionFilter" class="org.geoserver.platform.NameExclusionFilter">
+		<property name="beanId" value="Tiff8MapProducer" />
+	</bean>
+	<bean id="GIFMapProducerExclusionFilter" class="org.geoserver.platform.NameExclusionFilter">
+		<property name="beanId" value="GIFMapProducer" />
+	</bean>
+	<bean id="JPEGMapProducerExclusionFilter" class="org.geoserver.platform.NameExclusionFilter">
+		<property name="beanId" value="JPEGMapProducer" />
+	</bean>
+	<bean id="DistributedPNGMapProducer"
+		class="mil.nga.giat.geowave.gt.wms.DistributedRenderMapOutputFormat">
+		<constructor-arg>
+			<description>The prescribed output format MIME-Type</description>
+			<value>image/png</value>
+		</constructor-arg>
+		<constructor-arg>
+			<description>The declared output format MIME-Types in the
+				capabilities document</description>
+			<list>
+				<value>image/png</value>
+			</list>
+		</constructor-arg>
+		<constructor-arg ref="wms" />
+		<property name="extension" value="png" />
+	</bean>
+	<bean id="DistributedPNG8MapProducer"
+		class="mil.nga.giat.geowave.gt.wms.DistributedRenderMapOutputFormat">
+		<constructor-arg>
+			<description>The prescribed output format MIME-Type</description>
+			<value>image/png; mode=8bit</value>
+		</constructor-arg>
+		<constructor-arg>
+			<description>The declared output format MIME-Types in the
+				capabilities document</description>
+			<list>
+				<value>image/png8</value>
+				<value>image/png; mode=8bit</value>
+			</list>
+		</constructor-arg>
+		<constructor-arg ref="wms" />
+		<property name="extension" value="png" />
+	</bean>
+
+	<bean id="DistributedGeoTiffMapProducer"
+		class="mil.nga.giat.geowave.gt.wms.DistributedRenderMapOutputFormat">
+		<constructor-arg>
+			<description>The prescribed output format MIME-Type</description>
+			<value>image/geotiff</value>
+		</constructor-arg>
+		<constructor-arg>
+			<description>The declared output format MIME-Types in the
+				capabilities document</description>
+			<list>
+				<value>image/geotiff</value>
+			</list>
+		</constructor-arg>
+		<property name="extension" value="tif" />
+		<constructor-arg ref="wms" />
+	</bean>
+	<bean id="DistributedGeoTiffMapProducer8"
+		class="mil.nga.giat.geowave.gt.wms.DistributedRenderMapOutputFormat">
+		<constructor-arg>
+			<description>The prescribed output format MIME-Type</description>
+			<value>image/geotiff8</value>
+		</constructor-arg>
+		<constructor-arg>
+			<description>The declared output format MIME-Types in the
+				capabilities document</description>
+			<list>
+				<value>image/geotiff8</value>
+			</list>
+		</constructor-arg>
+		<constructor-arg ref="wms" />
+		<property name="extension" value="tif" />
+	</bean>
+	<bean id="DistributedTiffMapProducer"
+		class="mil.nga.giat.geowave.gt.wms.DistributedRenderMapOutputFormat">
+		<constructor-arg>
+			<description>The prescribed output format MIME-Type</description>
+			<value>image/tiff</value>
+		</constructor-arg>
+		<constructor-arg>
+			<description>The declared output format MIME-Types in the
+				capabilities document</description>
+			<list>
+				<value>image/tiff</value>
+			</list>
+		</constructor-arg>
+		<constructor-arg ref="wms" />
+		<property name="extension" value="tif" />
+	</bean>
+	<bean id="DistributedTiff8MapProducer"
+		class="mil.nga.giat.geowave.gt.wms.DistributedRenderMapOutputFormat">
+		<constructor-arg>
+			<description>The prescribed output format MIME-Type</description>
+			<value>image/tiff8</value>
+		</constructor-arg>
+		<constructor-arg>
+			<description>The declared output format MIME-Types in the
+				capabilities document</description>
+			<list>
+				<value>image/tiff8</value>
+			</list>
+		</constructor-arg>
+		<constructor-arg ref="wms" />
+		<property name="extension" value="tif" />
+	</bean>
+
+	<bean id="DistributedGIFMapProducer"
+		class="mil.nga.giat.geowave.gt.wms.DistributedRenderMapOutputFormat">
+		<constructor-arg>
+			<description>The prescribed output format MIME-Type, same as declared
+				in the getcaps document</description>
+			<value>image/gif</value>
+		</constructor-arg>
+		<constructor-arg>
+			<description>The declared output format MIME-Types in the
+				capabilities document</description>
+			<list>
+				<value>image/gif</value>
+				<value>image/gif;subtype=animated</value>
+			</list>
+		</constructor-arg>
+		<constructor-arg ref="wms" />
+		<property name="extension" value="gif" />
+	</bean>
+	<bean id="DistributedJPEGMapProducer"
+		class="mil.nga.giat.geowave.gt.wms.DistributedRenderMapOutputFormat">
+		<constructor-arg>
+			<description>The prescribed output format MIME-Type, same as declared
+				in the getcaps document</description>
+			<value>image/jpeg</value>
+		</constructor-arg>
+		<constructor-arg ref="wms" />
+		<property name="transparencySupported">
+			<description>JPEG does not support transparency</description>
+			<value>false</value>
+		</property>
+		<property name="paletteSupported">
+			<description>JPEG does not support 8-bit indexed color maps</description>
+			<value>false</value>
+		</property>
+		<property name="extension" value="jpg" />
+	</bean>
+</beans>
